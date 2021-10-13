@@ -4,13 +4,14 @@ import Header from './myComponents/Header';
 import Footer from "./myComponents/Footer";
 import { Todos } from "./myComponents/Todos";
 import { TodosItem } from "./myComponents/TodoItem";
+import {AddTodos } from "./myComponents/AddTodos";
 import React, { useState } from 'react';
 
 function App() {
    const onDelete = (todo)=>{
       console.log("you click on delete",{todo})
       setTodo(todos.filter((e)=>{
-         return e!=todo
+         return e!==todo
       }))
    }
    const [todos, setTodo] = useState(
@@ -34,6 +35,7 @@ function App() {
   return (
      <>
       <Header title = {"Todos-list"} />
+      <AddTodos/>
       <Todos todos={todos} onDelete={onDelete} />
       <Footer/>
      </>
