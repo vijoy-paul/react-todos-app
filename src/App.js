@@ -4,12 +4,17 @@ import Header from './myComponents/Header';
 import Footer from "./myComponents/Footer";
 import { Todos } from "./myComponents/Todos";
 import { TodosItem } from "./myComponents/TodoItem";
+import React, { useState } from 'react';
 
 function App() {
    const onDelete = (todo)=>{
       console.log("you click on delete",{todo})
+      setTodo(todos.filter((e)=>{
+         return e!=todo
+      }))
    }
-   let todos =[
+   const [todos, setTodo] = useState(
+   [
       {
          sno : 1,
          title : "market shoping list",
@@ -25,11 +30,11 @@ function App() {
          title : "market shoping list",
          Desc : "i need 2 eggs and 1kg of flour(3)"
       }
-   ]
+   ]);
   return (
      <>
       <Header title = {"Todos-list"} />
-      <Todos todos={todos} onDelete={onDelete}/>
+      <Todos todos={todos} onDelete={onDelete} />
       <Footer/>
      </>
   );
